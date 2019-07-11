@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('student', 'SampleController');
+//run this controller in browser
+ Route::resource('sampleViews', 'SampleController');

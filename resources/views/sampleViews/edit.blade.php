@@ -20,16 +20,16 @@
    {{csrf_field()}}
    <input type="hidden" name="_method" value="PATCH" />
    <div class="form-group">
-    <input type="text" name="first_name" class="form-control" value="{{$student->first_name}}" placeholder="Enter First Name" />
+    <input type="text" name="first_name" value="{{$users->first_name}}" placeholder="Enter First Name" />
    </div>
    <div class="form-group">
-    <input type="text" name="last_name" class="form-control" value="{{$student->last_name}}" placeholder="Enter Last Name" />
+    <input type="text" name="last_name"  value="{{$users->last_name}}" placeholder="Enter Last Name" />
    </div>
    <div class="form-group">
-    <input type="text" name="email" class="form-control" value="{{$student->email}}" placeholder="Enter Last Name" />
+    <input type="text" name="email" value="{{$users->email}}" placeholder="Enter Last Name" />
    </div>
    <div class="form-group">
-    <input type="text" name="mobile_number" class="form-control" value="{{$student->mobile_number}}" placeholder="Enter Last Name" />
+    <input type="text" name="mobile_number" value="{{$users->mobile_number}}" placeholder="Enter Last Name" />
    </div>
    <div class="form-group">
     <input type="submit" class="btn btn-primary" value="Edit" />

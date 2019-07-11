@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
+use App\Sample;
 
 class SampleController extends Controller
 {
@@ -14,8 +14,8 @@ class SampleController extends Controller
      */
     public function index()
     {
-        $students = Student::all()->toArray();
-        return view('student.index', compact('students'));
+        $users = Sample::all()->toArray();
+        return view('sampleViews.index', compact('users'));
     }
 
     /**
@@ -25,7 +25,7 @@ class SampleController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        return view('sampleViews.create');
     }
 
     /**
@@ -43,14 +43,14 @@ class SampleController extends Controller
             'mobile_number'     =>  'required'
 
         ]);
-        $student = new Student([
+        $users = new Sample([
             'first_name'    =>  $request->get('first_name'),
             'last_name'     =>  $request->get('last_name'),
             'email'     =>  $request->get('email'),
             'mobile_number'     =>  $request->get('mobile_number')
         ]);
-        $student->save();
-        return redirect()->route('student.index')->with('success', 'Data Added');
+        $users->save();
+        return redirect()->route('sampleViews.index')->with('success', 'Data Added');
     }
 
     /**
@@ -72,8 +72,8 @@ class SampleController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::find($id);
-        return view('student.edit', compact('student', 'id'));
+        $users = Sample::find($id);
+        return view('sampleViews.edit', compact('users', 'id'));
     }
 
     /**
@@ -91,13 +91,13 @@ class SampleController extends Controller
             'email'     =>  'required',
             'mobile_number'     =>  'required'
         ]);
-        $student = Student::find($id);
-        $student->first_name = $request->get('first_name');
-        $student->last_name = $request->get('last_name');
-        $student->email = $request->get('email');
-        $student->mobile_number = $request->get('mobile_number');
-        $student->save();
-        return redirect()->route('student.index')->with('success', 'Data Updated');
+        $users = Sample::find($id);
+        $users->first_name = $request->get('first_name');
+        $users->last_name = $request->get('last_name');
+        $users->email = $request->get('email');
+        $users->mobile_number = $request->get('mobile_number');
+        $users->save();
+        return redirect()->route('sampleViews.index')->with('success', 'Data Updated');
     
     }
 
@@ -109,8 +109,8 @@ class SampleController extends Controller
      */
     public function destroy($id)
     {
-        $student = Student::find($id);
+        $student = Sample::find($id);
         $student->delete();
-        return redirect()->route('student.index')->with('success', 'Data Deleted');
+        return redirect()->route('sampleViews.index')->with('success', 'Data Deleted');
     }
 }

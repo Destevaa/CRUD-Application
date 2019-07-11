@@ -5,29 +5,30 @@
 <div class="row">
  <div class="col-md-12">
   <br />
-  <h3 align="center">Student Data</h3>
   <br />
   @if($message = Session::get('success'))
   <div class="alert alert-success">
    <p>{{$message}}</p>
   </div>
   @endif
-  <div align="right">
-   <a href="{{route('student.create')}}" class="btn btn-primary">Add</a>
+  <div align="left">
+   <a href="{{route('sampleViews.create')}}" class="btn btn-primary">Add Users</a>
    <br />
    <br />
   </div>
-  <table class="table table-bordered table-striped">
+  <table class="table table-hover">
    <tr>
+    <th>User ID</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
     <th>Mobile Number</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <th></th>
+    <th></th>
    </tr>
-   @foreach($students as $row)
+   @foreach($users as $row)
    <tr>
+   <td scope >{{$row['id']}}</td>
     <td>{{$row['first_name']}}</td>
     <td>{{$row['last_name']}}</td>
     <td>{{$row['email']}}</td>
@@ -37,7 +38,7 @@
     <form method="post" class="delete_form" action="{{action('SampleController@destroy', $row['id'])}}">
       {{csrf_field()}}
       <input type="hidden" name="_method" value="DELETE" />
-      <button type="submit" class="btn btn-danger">Delete</button>
+      <button type="submit" class="btn btn-danger">X</button>
      </form>
     
     </td>
@@ -49,7 +50,7 @@
 <script>
 $(document).ready(function(){
  $('.delete_form').on('submit', function(){
-  if(confirm("Are you sure you want to delete it?"))
+  if(confirm("Are you sure you want to remove this user?"))
   {
    return true;
   }
